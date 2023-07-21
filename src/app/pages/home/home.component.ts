@@ -12,13 +12,11 @@ export class HomeComponent implements OnInit {
     private taskM: TasksService
   ) { }
 
-  newTask:Task = {
-    id: "1",
-    title: "hola",
-    completed: false
-  }
+  tasks: Task[] = []
 
   ngOnInit(): void {
+    this.taskM.saveTask(this.tasks)
+    //console.log()
   }
 
 }
