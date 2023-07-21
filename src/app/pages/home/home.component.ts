@@ -9,13 +9,13 @@ import { Task } from 'src/models/task.model';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private taskM: TasksService
+    private tasksManager: TasksService
   ) { }
 
   tasks: Task[] = []
 
   ngOnInit(): void {
-    this.taskM.saveTask(this.tasks)
+    this.tasksManager.saveTask(this.tasks)
     //console.log()
   }
 
