@@ -32,4 +32,11 @@ export class TodosService {
     this.saveTask(list)
     return
   }
+
+  swapStatus(id:string) {
+    const list: Todo[] = this.getTasks()
+    list[parseInt(id)].completed = !list[parseInt(id)].completed
+    this.saveTask(list)
+    return
+  }
 }

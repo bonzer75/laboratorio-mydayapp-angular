@@ -41,4 +41,9 @@ export class HomeComponent implements OnInit {
     this.allTodos = this.manager.getTasks();
   }
 
+  mark(id:string) {
+    this.manager.swapStatus(id)
+    this.allTodos = this.manager.getTasks();
+  }
+
 }
