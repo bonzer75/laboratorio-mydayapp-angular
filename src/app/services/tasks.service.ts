@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from 'src/models/task.model';
+import { Todo } from 'src/models/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class TasksService {
 
   constructor() { }
 
-  saveTask(task: Task | Task[]) {
+  saveTask(task: Todo | Todo[]) {
     localStorage.setItem("mydayapp-angular", JSON.stringify(task));
   }
 

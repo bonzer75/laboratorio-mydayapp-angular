@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from 'src/app/services/tasks.service';
-import { Task } from 'src/models/task.model';
+import { Todo } from 'src/models/task.model';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +12,8 @@ export class HomeComponent implements OnInit {
     private tasksManager: TasksService
   ) { }
 
-  newTodo: Task | null = null;
-  tasks: Task[] = []
+  newTodo: Todo | null = null;
+  tasks: Todo[] = []
 
   ngOnInit(): void {
     this.tasksManager.saveTask(this.tasks)
