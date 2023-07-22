@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TodosService } from 'src/app/services/todos.service';
 import { Todo } from 'src/models/todo.model';
 
@@ -9,33 +9,31 @@ import { Todo } from 'src/models/todo.model';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private tasksManager: TodosService
+    private manager: TodosService
   ) { }
 
   newTodo: Todo | null = null;
-  tasks: Todo[] = []
+  allTodos: Todo[] = this.manager.getTasks();
 
   ngOnInit(): void {
-    this.tasksManager.saveTask(this.tasks)
+    this.manager.saveTask([])
     //console.log()
   }
-  
+
   addTodo(event: any) {
     const value = event.target.value;
 
     this.newTodo = {
-     id: this.tasksManager.getTodoId(),
+     id: this.manager.getTodoId(),
      title: value,
      completed: false 
     };
 
-    const todoList = this.tasksManager.getTasks()
+    const todoList = this.manager.getTasks()
     todoList.push(this.newTodo)
 
-    this.tasksManager.saveTask(todoList);
-    this.newTodo = null;
-
-    console.log("added sucessfully");
+    this.manager.saveTask(todoList);
+    this.allTodos = this.manager.getTasks();    
   }
 
 }

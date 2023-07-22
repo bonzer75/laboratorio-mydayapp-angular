@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./all.component.css']
 })
 export class AllComponent {
-
+  addTodo($event: any) {
+    
+  }
 }

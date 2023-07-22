@@ -24,10 +24,10 @@
           </div>
           <input class="edit" value="Learn JavaScript" />
         </li>
-        <li>
+        <li *ngFor="let todo of allTodos">
           <div class="view">
             <input class="toggle" type="checkbox" />
-            <label>Buy a unicorn</label>
+            <label>{{ todo.title }}</label>
             <button class="destroy"></button>
           </div>
           <input class="edit" value="Buy a unicorn" />
