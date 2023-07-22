@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TasksService } from 'src/app/services/tasks.service';
-import { Todo } from 'src/models/task.model';
+import { TodosService } from 'src/app/services/todos.service';
+import { Todo } from 'src/models/todo.model';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,7 @@ import { Todo } from 'src/models/task.model';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private tasksManager: TasksService
+    private tasksManager: TodosService
   ) { }
 
   newTodo: Todo | null = null;
@@ -24,12 +24,15 @@ export class HomeComponent implements OnInit {
     const value = event.target.value;
 
     this.newTodo = {
-     id: "",
+     id: this.tasksManager.getTodoId(),
      title: value,
      completed: false 
     };
 
-    this.tasksManager.saveTask(this.newTodo);
+    const todoList = this.tasksManager.getTasks()
+    todoList.push(this.newTodo)
+
+    this.tasksManager.saveTask(todoList);
     this.newTodo = null;
 
     console.log("added sucessfully");
