@@ -8,6 +8,7 @@
         placeholder="Type new todo"
         autofocus
         type="text"
+        (keydown.enter)="addTodo($event)" 
       />
     </div>
   </header>

@@ -12,11 +12,27 @@ export class HomeComponent implements OnInit {
     private tasksManager: TasksService
   ) { }
 
+  newTodo: Task | null = null;
   tasks: Task[] = []
 
   ngOnInit(): void {
     this.tasksManager.saveTask(this.tasks)
     //console.log()
+  }
+  
+  addTodo(event: any) {
+    const value = event.target.value;
+
+    this.newTodo = {
+     id: "",
+     title: value,
+     completed: false 
+    };
+
+    this.tasksManager.saveTask(this.newTodo);
+    this.newTodo = null;
+
+    console.log("added sucessfully");
   }
 
 }
