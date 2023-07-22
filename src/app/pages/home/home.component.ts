@@ -36,4 +36,9 @@ export class HomeComponent implements OnInit {
     this.allTodos = this.manager.getTasks();    
   }
 
+  destroy(id: string) {
+    this.manager.deleteTodo(id)
+    this.allTodos = this.manager.getTasks();
+  }
+
 }

@@ -10,6 +10,7 @@ export class TodosService {
 
   saveTask(task: Todo[]) {
     localStorage.setItem("mydayapp-angular", JSON.stringify(task));
+    return
   }
 
   getTasks() {
@@ -23,5 +24,12 @@ export class TodosService {
   getTodoId() {
     const list: Todo[] = this.getTasks()
     return `${list.length}`
+  }
+
+  deleteTodo(id: string) {
+    const list: Todo[] = this.getTasks()
+    list.splice(parseInt(id), 1)
+    this.saveTask(list)
+    return
   }
 }
